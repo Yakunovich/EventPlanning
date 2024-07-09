@@ -6,16 +6,13 @@
         public string Name { get; set; }
         public string Theme { get; set; }
         public string Location { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime Date { get; set; }
+        public int? MaxParticipants { get; set; }
+        public int? CurrentParticipants { get; set; }
 
-        public ICollection<AdditionalField> AdditionalFields { get; set; }
-        public ICollection<Registration> Registrations { get; set; }
+        public ICollection<EventAdditionalField> EventAdditionalFields { get; set; } = new List<EventAdditionalField>();
+        public ICollection<Registration> Registrations { get; set; } = new List<Registration>();
 
-        public Event()
-        {
-            AdditionalFields = new List<AdditionalField>();
-            Registrations = new List<Registration>();
-        }
     }
 
 }

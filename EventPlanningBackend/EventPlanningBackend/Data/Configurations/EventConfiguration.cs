@@ -1,5 +1,4 @@
-﻿// EventConfiguration.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using EventPlanningBackend.Models;
 
@@ -15,7 +14,7 @@ namespace EventPlanningBackend.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.HasMany(e => e.AdditionalFields)
+            builder.HasMany(e => e.EventAdditionalFields)
                 .WithOne(af => af.Event)
                 .HasForeignKey(af => af.EventId);
 
@@ -25,8 +24,3 @@ namespace EventPlanningBackend.Data.Configurations
         }
     }
 }
-
-// RegistrationConfiguration.cs
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using EventPlanningBackend.Models;

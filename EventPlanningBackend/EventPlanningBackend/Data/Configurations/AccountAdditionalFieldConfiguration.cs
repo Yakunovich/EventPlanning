@@ -4,9 +4,9 @@ using EventPlanningBackend.Models;
 
 namespace EventPlanningBackend.Data.Configurations
 {
-    public class AdditionalFieldConfiguration : IEntityTypeConfiguration<AdditionalField>
+    public class AccountAdditionalFieldConfiguration : IEntityTypeConfiguration<AccountAdditionalField>
     {
-        public void Configure(EntityTypeBuilder<AdditionalField> builder)
+        public void Configure(EntityTypeBuilder<AccountAdditionalField> builder)
         {
             builder.HasKey(af => af.Id);
 
@@ -17,9 +17,6 @@ namespace EventPlanningBackend.Data.Configurations
             builder.Property(af => af.FieldValue)
                 .IsRequired();
 
-            builder.HasOne(af => af.Event)
-                .WithMany(e => e.AdditionalFields)
-                .HasForeignKey(af => af.EventId);
         }
     }
 }

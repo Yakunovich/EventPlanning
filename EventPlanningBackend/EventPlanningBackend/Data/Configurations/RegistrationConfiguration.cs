@@ -1,7 +1,4 @@
-﻿
-
-// RegistrationConfiguration.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using EventPlanningBackend.Models;
 
@@ -23,8 +20,3 @@ namespace EventPlanningBackend.Data.Configurations
         }
     }
 }
-
-// AccountConfiguration.cs
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using EventPlanningBackend.Models;

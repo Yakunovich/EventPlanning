@@ -1,7 +1,4 @@
-﻿
-
-// RegistrationConfiguration.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using EventPlanningBackend.Models;
 
@@ -19,11 +16,15 @@ namespace EventPlanningBackend.Data.Configurations
 
             builder.Property(a => a.PasswordHash)
                 .IsRequired();
+
+            builder.Property(a => a.ConfirmationToken)
+                .IsRequired();
+
+            builder.Property(a => a.IsEmailConfirmed)
+                .HasDefaultValue(false);
+
+            builder.Property(a => a.Role)
+                .HasMaxLength(50);
         }
     }
 }
-
-// AdditionalFieldConfiguration.cs
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using EventPlanningBackend.Models;
