@@ -37,6 +37,7 @@ public class AccountService : IAccountService
         var confirmationToken = Guid.NewGuid().ToString();
 
         var account = _mapper.Map<Account>(registerDto);
+        account.Role = registerDto.Role ?? "User";
         account.PasswordHash = passwordHash;
         account.ConfirmationToken = confirmationToken;
 

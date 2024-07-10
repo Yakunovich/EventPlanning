@@ -90,16 +90,6 @@ namespace EventPlanningBackend.Data
                     Role = "Manager",
                     IsEmailConfirmed = true,
                     ConfirmationToken = "token"
-                },
-                new Account
-                {
-                    Id = 4,
-                    Email = "admin@example.com",
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("password"),
-                    FullName = "Admin",
-                    Role = "Admin",
-                    IsEmailConfirmed = true,
-                    ConfirmationToken = "token"
                 }
             );
 

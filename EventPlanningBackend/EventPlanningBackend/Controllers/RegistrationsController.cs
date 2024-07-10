@@ -13,13 +13,22 @@ public class RegistrationController : ControllerBase
     }
 
     [HttpPost]
-    //[Authorize]
+    [Authorize]
     public async Task<IActionResult> Register([FromBody] RegistrationDto request)
     {
-        var confirmationToken = Guid.NewGuid().ToString();
-        var registration = await _registrationService.RegisterAsync(request.EventId, request.AccountId, confirmationToken);
+        try
+        {
+            var confirmationToken = Guid.NewGuid().ToString();
+            var accountId = int.Parse(User.FindFirst("AccountId").Value);
 
-        return Ok(registration);
+            var registration = await _registrationService.RegisterAsync(request.EventId, accountId, confirmationToken);
+
+            return Ok(registration);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message); 
+        }
     }
 
     [HttpGet("confirm/{token}")]

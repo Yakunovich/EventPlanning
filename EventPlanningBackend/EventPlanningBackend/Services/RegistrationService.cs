@@ -59,10 +59,10 @@ public class RegistrationService : IRegistrationService
         var baseUrl = $"{request.Scheme}://{request.Host.Value}";
 
 
-        var confirmationLink = $"{baseUrl}/api/event/confirm?token={confirmationToken}";
+        var confirmationLink = $"{baseUrl}/api/registration/confirm/{confirmationToken}";
         var message = $"Please confirm your event registration by clicking the following link: <a href=\"{confirmationLink}\">Confirm Registration</a>";
 
-       // await _emailService.SendEmailAsync(account.Email, "Event Registration Confirmation", message);
+        await _emailService.SendEmailAsync(account.Email, "Event Registration Confirmation", message);
 
 
         return registration;
@@ -78,6 +78,11 @@ public class RegistrationService : IRegistrationService
 
         registration.IsConfirmed = true;
         await _registrationRepository.UpdateAsync(registration);
+
+        var eventEntity = await _eventRepository.GetByIdAsync(registration.EventId);
+        eventEntity.CurrentParticipants += 1;
+        await _eventRepository.UpdateAsync(eventEntity);
+
         return true;
     }
 

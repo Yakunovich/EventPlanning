@@ -22,6 +22,7 @@ namespace EventPlanningBackend.Services
                 new Claim(JwtRegisteredClaimNames.Sub, email),
                 new Claim("AccountId", accountId.ToString()),
                 new Claim(ClaimTypes.Role, role),
+                new Claim("role", role),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

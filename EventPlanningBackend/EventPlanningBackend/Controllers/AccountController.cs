@@ -17,6 +17,11 @@ namespace EventPlanningBackend.Controllers
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
             var result = await _accountService.RegisterAsync(registerDto);
+            if(result == "Email already registered")
+            {
+                return BadRequest("Email already registered");
+            }
+
             return Ok(result);
         }
 
